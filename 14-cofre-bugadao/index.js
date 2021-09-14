@@ -1,28 +1,33 @@
-const input = ['cubos', 'cuggbyos'];
+const input = "cubos\ncuggbyos\n";
 
-const pass = input[0];
-const userEntry = input[1];
+const arrayInput = input.trim().split('\n');
+
+const pass = arrayInput[0];
+const userEntry = arrayInput[1];
 let found;
 let pastJ = 0;
 
-for (let i = 0; i < pass.length; i++) {
+pass.split('').forEach(x => {
     found = false;
+
     for (let j = 0; j < userEntry.length; j++) {
-        if (pass[i] === userEntry[j]) {
-            if (i === 0 || j > pastJ) {
+
+        if (x === userEntry[j]) {
+
+            if (j === 0 || j > pastJ) {
                 pastJ = j;
                 found = true;
-            } else {
-                found = false;
             }
+
             break;
         }
     }
-    if (!found) break;
-}
+});
 
 if (!found) {
     console.log("NAO");
 } else {
     console.log("SIM");
 }
+
+
